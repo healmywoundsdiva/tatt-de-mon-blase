@@ -28,6 +28,38 @@ platforms.forEach((platform, index) => {
 
 
 // ======================================
+// ЗВУК НАЖАТИЯ НА ПЛОЩАДКУ
+// ======================================
+
+platforms.forEach((platform) => {
+
+    platform.addEventListener("click", (event) => {
+
+        // Не даём ссылке открыться сразу
+        event.preventDefault();
+
+        // Создаём звук клика
+        const clickSound = new Audio("sound/mouse-click.wav");
+
+        // Громкость звука
+        clickSound.volume = 0.5;
+
+        // Проигрываем звук
+        clickSound.play();
+
+        // Небольшая задержка перед переходом
+        setTimeout(() => {
+
+            window.open(platform.href, "_blank");
+
+        }, 50);
+
+    });
+
+});
+
+
+// ======================================
 // СТАРТОВЫЙ ЭКРАН + МУЗЫКА
 // ======================================
 
@@ -46,7 +78,23 @@ tapScreen.addEventListener("click", () => {
 
 
 // ======================================
-// НАЗВАНИЕ В КОНСОЛИ
+// ПАУЗА ПРИ УХОДЕ СО СТРАНИЦЫ
 // ======================================
 
-console.log(`${release.artist} — ${release.title}`);
+document.addEventListener("visibilitychange", () => {
+
+    if (document.hidden) {
+
+        // Пользователь покинул вкладку
+        music.pause();
+
+    } else {
+
+        // Пользователь вернулся на сайт
+        music.play().catch(() => {
+            // Браузер может запретить автоматический запуск
+        });
+
+    }
+
+});
