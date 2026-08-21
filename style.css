@@ -1,25 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
 
+
 /* ========================================
    ОСНОВНЫЕ НАСТРОЙКИ
 ======================================== */
 
 * {
+
     margin: 0;
+
     padding: 0;
+
     box-sizing: border-box;
+
 }
+
 
 html {
+
     scroll-behavior: smooth;
+
 }
 
+
 body {
+
     min-height: 100vh;
+
     background: #050505;
+
     color: #ffffff;
+
     font-family: 'Inter', sans-serif;
+
     overflow-x: hidden;
+
 }
 
 
@@ -28,35 +43,48 @@ body {
 ======================================== */
 
 .background {
+
     position: fixed;
+
     inset: 0;
+
     z-index: -2;
 
     background:
+
         radial-gradient(
             circle at 50% 20%,
             rgba(255, 255, 255, 0.07),
             transparent 35%
         ),
+
         #050505;
+
 }
 
+
 .background::after {
+
     content: "";
 
     position: absolute;
 
     width: 120vw;
+
     height: 120vw;
 
     left: 50%;
+
     top: 50%;
 
     background-image: url("images/cover.png");
+
     background-size: cover;
+
     background-position: center;
 
     filter: blur(20px);
+
     opacity: 0.12;
 
     transform:
@@ -64,6 +92,7 @@ body {
         scale(1.2);
 
     animation: rotateBackground 45s linear infinite;
+
 }
 
 
@@ -72,10 +101,13 @@ body {
 ======================================== */
 
 .tap-screen {
+
     position: fixed;
+
     inset: 0;
 
     width: 100%;
+
     height: 100vh;
 
     background: #000000;
@@ -83,26 +115,30 @@ body {
     z-index: 9999;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     cursor: pointer;
 
     opacity: 1;
+
     visibility: visible;
 
     transition:
         opacity 0.8s ease,
         visibility 0.8s ease;
+
 }
 
 
-/* Текст TAP */
-
 .tap-text {
+
     color: #ffffff;
 
     font-size: 16px;
+
     font-weight: 600;
 
     letter-spacing: 0.35em;
@@ -113,34 +149,38 @@ body {
         transform 0.35s ease,
         opacity 0.35s ease,
         letter-spacing 0.35s ease;
+
 }
 
 
-/* Наведение на TAP */
-
 .tap-screen:hover .tap-text {
+
     transform: scale(1.15);
 
     opacity: 0.65;
 
     letter-spacing: 0.45em;
+
 }
 
-
-/* Нажатие */
 
 .tap-screen:active .tap-text {
+
     transform: scale(0.9);
+
     opacity: 0.3;
+
 }
 
 
-/* После нажатия экран исчезает */
-
 .tap-screen.hidden {
+
     opacity: 0;
+
     visibility: hidden;
+
     pointer-events: none;
+
 }
 
 
@@ -149,6 +189,7 @@ body {
 ======================================== */
 
 .container {
+
     width: min(100% - 32px, 520px);
 
     margin: 0 auto;
@@ -156,10 +197,13 @@ body {
     min-height: 100vh;
 
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
 
     padding: 60px 0 30px;
+
 }
 
 
@@ -168,7 +212,9 @@ body {
 ======================================== */
 
 .cover-wrapper {
+
     width: 100%;
+
     max-width: 450px;
 
     aspect-ratio: 1 / 1;
@@ -176,10 +222,14 @@ body {
     position: relative;
 
     animation: appear 0.8s ease forwards;
+
 }
 
+
 .cover {
+
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -190,6 +240,85 @@ body {
 
     box-shadow:
         0 30px 80px rgba(0, 0, 0, 0.7);
+
+}
+
+
+/* ========================================
+   КНОПКА ПОДЕЛИТЬСЯ
+======================================== */
+
+.share-button {
+
+    position: absolute;
+
+    right: 14px;
+
+    bottom: 14px;
+
+    width: 44px;
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.38);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.35);
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.share-button svg {
+
+    width: 19px;
+
+    height: 19px;
+
+    fill: currentColor;
+
+    opacity: 0.9;
+
+}
+
+
+.share-button:hover {
+
+    background: rgba(255, 255, 255, 0.14);
+
+    border-color: rgba(255, 255, 255, 0.35);
+
+    transform: scale(1.08);
+
+}
+
+
+.share-button:active {
+
+    transform: scale(0.92);
+
 }
 
 
@@ -198,15 +327,20 @@ body {
 ======================================== */
 
 .release-info {
+
     text-align: center;
 
     margin-top: 30px;
+
     margin-bottom: 28px;
 
     animation: fadeUp 0.8s ease 0.15s both;
+
 }
 
+
 .release-info h1 {
+
     font-size: clamp(28px, 7vw, 44px);
 
     font-weight: 900;
@@ -216,9 +350,12 @@ body {
     text-transform: lowercase;
 
     margin-bottom: 10px;
+
 }
 
+
 .artist {
+
     font-size: 16px;
 
     font-weight: 600;
@@ -228,6 +365,7 @@ body {
     text-transform: uppercase;
 
     opacity: 0.55;
+
 }
 
 
@@ -236,18 +374,24 @@ body {
 ======================================== */
 
 .platforms {
+
     width: 100%;
 
     display: flex;
+
     flex-direction: column;
 
     gap: 10px;
 
     animation: fadeUp 0.8s ease 0.3s both;
+
 }
 
+
 .platform {
+
     width: 100%;
+
     max-width: 450px;
 
     margin: 0 auto;
@@ -257,7 +401,9 @@ body {
     padding: 0 22px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     color: #ffffff;
@@ -276,6 +422,7 @@ body {
         background 0.25s ease,
         border-color 0.25s ease,
         transform 0.25s ease;
+
 }
 
 
@@ -284,24 +431,35 @@ body {
 ======================================== */
 
 .platform-info {
+
     display: flex;
+
     align-items: center;
 
     gap: 14px;
+
 }
 
+
 .platform-icon {
+
     width: 28px;
+
     height: 28px;
 
     object-fit: contain;
 
     flex-shrink: 0;
+
 }
 
+
 .platform-info span {
+
     font-size: 14px;
+
     font-weight: 500;
+
 }
 
 
@@ -310,6 +468,7 @@ body {
 ======================================== */
 
 .arrow {
+
     font-size: 24px;
 
     line-height: 1;
@@ -319,6 +478,7 @@ body {
     transition:
         transform 0.25s ease,
         opacity 0.25s ease;
+
 }
 
 
@@ -327,17 +487,22 @@ body {
 ======================================== */
 
 .platform:hover {
+
     background: rgba(255, 255, 255, 0.10);
 
     border-color: rgba(255, 255, 255, 0.30);
 
     transform: translateY(-2px);
+
 }
 
+
 .platform:hover .arrow {
+
     opacity: 1;
 
     transform: translateX(4px);
+
 }
 
 
@@ -346,7 +511,9 @@ body {
 ======================================== */
 
 .platform:active {
+
     transform: scale(0.98);
+
 }
 
 
@@ -355,6 +522,7 @@ body {
 ======================================== */
 
 footer {
+
     margin-top: auto;
 
     padding-top: 45px;
@@ -362,14 +530,18 @@ footer {
     text-align: center;
 
     animation: fadeUp 0.8s ease 0.45s both;
+
 }
 
+
 footer p {
+
     font-size: 9px;
 
     letter-spacing: 0.15em;
 
     opacity: 0.25;
+
 }
 
 
@@ -378,15 +550,23 @@ footer p {
 ======================================== */
 
 @keyframes appear {
+
     from {
+
         opacity: 0;
+
         transform: scale(0.96);
+
     }
 
     to {
+
         opacity: 1;
+
         transform: scale(1);
+
     }
+
 }
 
 
@@ -395,15 +575,23 @@ footer p {
 ======================================== */
 
 @keyframes fadeUp {
+
     from {
+
         opacity: 0;
+
         transform: translateY(15px);
+
     }
 
     to {
+
         opacity: 1;
+
         transform: translateY(0);
+
     }
+
 }
 
 
@@ -412,40 +600,357 @@ footer p {
 ======================================== */
 
 @keyframes rotateBackground {
+
     0% {
+
         transform:
             translate(-50%, -50%)
             scale(1.2)
             rotate(0deg);
 
         opacity: 0.08;
+
     }
 
     25% {
+
         opacity: 0.13;
+
     }
 
     50% {
+
         transform:
             translate(-50%, -50%)
             scale(1.3)
             rotate(180deg);
 
         opacity: 0.10;
+
     }
 
     75% {
+
         opacity: 0.13;
+
     }
 
     100% {
+
         transform:
             translate(-50%, -50%)
             scale(1.2)
             rotate(360deg);
 
         opacity: 0.08;
+
     }
+
+}
+
+
+/* ========================================
+   ОКНО ПОДЕЛИТЬСЯ
+======================================== */
+
+.share-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+
+}
+
+
+.share-overlay.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+}
+
+
+/* ========================================
+   ОКНО
+======================================== */
+
+.share-window {
+
+    position: relative;
+
+    width: min(90% - 32px, 420px);
+
+    padding: 32px 24px 28px;
+
+    background: rgba(20, 20, 20, 0.88);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.8);
+
+    transform: translateY(20px) scale(0.96);
+
+    transition:
+        transform 0.35s ease;
+
+}
+
+
+.share-overlay.active .share-window {
+
+    transform: translateY(0) scale(1);
+
+}
+
+
+/* ========================================
+   ЗАГОЛОВОК SHARE
+======================================== */
+
+.share-title {
+
+    text-align: center;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.35em;
+
+    opacity: 0.55;
+
+    margin-bottom: 24px;
+
+}
+
+
+/* ========================================
+   КНОПКА ЗАКРЫТИЯ
+======================================== */
+
+.share-close {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 14px;
+
+    width: 32px;
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #ffffff;
+
+    font-size: 23px;
+
+    font-weight: 300;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.share-close:hover {
+
+    background: rgba(255, 255, 255, 0.14);
+
+    transform: rotate(90deg);
+
+}
+
+
+/* ========================================
+   КНОПКИ СОЦСЕТЕЙ
+======================================== */
+
+.share-buttons {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.share-item {
+
+    min-height: 82px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
+
+}
+
+
+.share-item:hover {
+
+    background: rgba(255, 255, 255, 0.10);
+
+    border-color: rgba(255, 255, 255, 0.20);
+
+    transform: translateY(-3px);
+
+}
+
+
+.share-item:active {
+
+    transform: scale(0.95);
+
+}
+
+
+/* ========================================
+   ИКОНКИ SHARE
+======================================== */
+
+.share-item svg {
+
+    width: 22px;
+
+    height: 22px;
+
+    fill: currentColor;
+
+    opacity: 0.9;
+
+    transition:
+        transform 0.3s ease;
+
+}
+
+
+.share-item:hover svg {
+
+    transform: scale(1.12);
+
+}
+
+
+.share-item span {
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+    opacity: 0.65;
+
+}
+
+
+/* ========================================
+   COPY
+======================================== */
+
+.share-copy {
+
+    appearance: none;
+
+}
+
+
+.copy-status {
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.2em;
+
+    opacity: 0;
+
+    transform: translateY(5px);
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+
+}
+
+
+.copy-status.visible {
+
+    opacity: 0.45;
+
+    transform: translateY(0);
+
 }
 
 
@@ -456,22 +961,59 @@ footer p {
 @media (max-width: 600px) {
 
     .container {
+
         padding-top: 35px;
+
     }
+
 
     .cover-wrapper {
+
         width: 100%;
+
         max-width: 450px;
+
     }
+
 
     .release-info {
+
         margin-top: 24px;
+
         margin-bottom: 22px;
+
     }
 
+
     .platform {
+
         min-height: 58px;
+
     }
+
+
+    .share-window {
+
+        width: calc(100% - 32px);
+
+        padding: 30px 18px 24px;
+
+    }
+
+
+    .share-buttons {
+
+        gap: 8px;
+
+    }
+
+
+    .share-item {
+
+        min-height: 76px;
+
+    }
+
 }
 
 
@@ -482,25 +1024,61 @@ footer p {
 @media (max-width: 360px) {
 
     .container {
+
         width: calc(100% - 24px);
+
     }
+
 
     .cover-wrapper {
+
         width: 100%;
+
         max-width: 450px;
+
     }
+
 
     .platform {
+
         min-height: 54px;
+
         padding: 0 17px;
+
     }
+
 
     .platform-icon {
+
         width: 25px;
+
         height: 25px;
+
     }
 
+
     .platform-info {
+
         gap: 11px;
+
     }
+
+
+    .share-window {
+
+        width: calc(100% - 24px);
+
+        padding-left: 14px;
+
+        padding-right: 14px;
+
+    }
+
+
+    .share-item {
+
+        min-height: 70px;
+
+    }
+
 }
